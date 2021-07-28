@@ -22,6 +22,11 @@ minikube update-context
 minikube tunnel
 ```
 
+### Point Docker Daemon to Minikube
+```bash
+eval $(minikube -p minikube docker-env)
+```
+
 ### Install istioctl
 ```bash
 brew install istioctl
