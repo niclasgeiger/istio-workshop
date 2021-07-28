@@ -18,4 +18,6 @@ deploy:
   kubectl:
     manifests:
     - client/kubernetes/deployment.yaml
+    - client/kubernetes/service.yaml
     - server/kubernetes/deployment.yaml
+    - server/kubernetes/service.yaml

@@ -65,4 +65,14 @@ istioctl dashboard jaeger
 skaffold run
 ```
 
+### Enable istio injection for default namespace
+```bash
+kubectl label namespace default istio-injection=enabled 
+```
 
+### Deploy Application again and check the sidecars
+
+```bash
+skaffold delete
+skaffold run
+```

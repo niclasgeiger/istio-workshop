@@ -32,7 +32,8 @@ func main() {
 func page(resp http.ResponseWriter, _ *http.Request) {
 	time, err := getTime()
 	if err != nil {
-		panic(err)
+		_, _ = resp.Write([]byte("could not get time!"))
+		return
 	}
 
 	body := new(bytes.Buffer)
@@ -51,17 +52,16 @@ type TimeResponse struct {
 }
 
 func getTime() (string, error) {
-	resp, err := http.Get("http://timeserver/time")
+	resp, err := http.Get("http://server/time")
 	if err != nil {
-		// TODO
-		return "something", nil
+		return "", err
 	}
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return "", err
 	}
 	var timeResponse TimeResponse
-	if err := json.Unmarshal(body, timeResponse); err != nil {
+	if err := json.Unmarshal(body, &timeResponse); err != nil {
 		return "", err
 	}
 	return timeResponse.Time, nil
