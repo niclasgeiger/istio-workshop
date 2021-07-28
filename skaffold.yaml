@@ -12,6 +12,8 @@ build:
     context: server
     docker:
       dockerfile: Dockerfile
+  local:
+    useBuildkit: true
 deploy:
   kubectl:
     manifests:
