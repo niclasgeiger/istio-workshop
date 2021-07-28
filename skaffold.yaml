@@ -8,8 +8,12 @@ build:
     context: client
     docker:
       dockerfile: Dockerfile
-  - image: server
-    context: server
+  - image: server-v1
+    context: server-v1
+    docker:
+      dockerfile: Dockerfile
+  - image: server-v2
+    context: server-v2
     docker:
       dockerfile: Dockerfile
   local:
@@ -19,5 +23,11 @@ deploy:
     manifests:
     - client/kubernetes/deployment.yaml
     - client/kubernetes/service.yaml
-    - server/kubernetes/deployment.yaml
-    - server/kubernetes/service.yaml
+    - client/kubernetes/virtualservice.yaml
+    - server-v1/kubernetes/deployment.yaml
+    - server-v1/kubernetes/service.yaml
+    - server-v2/kubernetes/deployment.yaml
+    - server-v2/kubernetes/service.yaml
+    - istio/gateway.yaml
+    - istio/destinationrule.yaml
+    - istio/virtualservice.yaml

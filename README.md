@@ -42,22 +42,32 @@ istioctl install --set profile=demo
 ```
 
 ## Monitoring
-### Access Prometheus (Metric Dashboards)
+### Prometheus (Metric Dashboards)
 ```bash
 istioctl dashboard prometheus
 ```
-### Access Grafana (Metric Dashboards)
+### Grafana (Metric Dashboards)
 ```bash
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.10/samples/addons/prometheus.yaml
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.10/samples/addons/grafana.yaml
 istioctl dashboard grafana
 ```
-### Access Kiali (Network)
+### Kiali (Network)
+Might have to run this twice because of CRDs.
 ```bash
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.10/samples/addons/kiali.yaml
 istioctl dashboard kiali
 ```
 The Login Credentials are: admin/admin
-### Access Jaeger (Tracing)
+### Jaeger (Tracing)
 ```bash
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.10/samples/addons/jaeger.yaml
 istioctl dashboard jaeger
+```
+### Jaeger (Tracing)
+```bash
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.10/samples/addons/extras/zipkin.yaml
+istioctl dashboard zipkin
 ```
 
 ### Deploy Applications
@@ -75,4 +85,9 @@ kubectl label namespace default istio-injection=enabled
 ```bash
 skaffold delete
 skaffold run
+```
+
+### Apply istio gateway
+```bash
+kubectl apply -f istio/gateway.yaml 
 ```
