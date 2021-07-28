@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server
+  labels:
+    app: server
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: server
+      labels:
+        app: server
+    spec:
+      containers:
+        - name: server
+          image: server:1.0.0
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: server

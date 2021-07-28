@@ -1,0 +1,19 @@
+apiVersion: skaffold/v2beta19
+kind: Config
+metadata:
+  name: istio-workshop
+build:
+  artifacts:
+  - image: client
+    context: client
+    docker:
+      dockerfile: Dockerfile
+  - image: server
+    context: server
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - client/kubernetes/deployment.yaml
+    - server/kubernetes/deployment.yaml

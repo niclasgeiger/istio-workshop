@@ -6,6 +6,14 @@
 ```bash
 brew install minikube
 ```
+### Install istioctl
+```bash
+brew install istioctl
+```
+### Install skaffold
+```bash
+brew install skaffold
+```
 
 ### Start cluster
 ```bash
@@ -25,11 +33,6 @@ minikube tunnel
 ### Point Docker Daemon to Minikube
 ```bash
 eval $(minikube -p minikube docker-env)
-```
-
-### Install istioctl
-```bash
-brew install istioctl
 ```
 
 ## Install Istio
@@ -56,3 +59,10 @@ The Login Credentials are: admin/admin
 ```bash
 istioctl dashboard jaeger
 ```
+
+### Deploy Applications
+```bash
+skaffold run
+```
+
+
