@@ -24,6 +24,8 @@ deploy:
     - client/kubernetes/deployment.yaml
     - client/kubernetes/service.yaml
     - client/kubernetes/virtualservice.yaml
+    - client/kubernetes/request-authentication.yaml
+    - client/kubernetes/authorization-policy.yaml
     - server-v1/kubernetes/deployment.yaml
     - server-v2/kubernetes/deployment.yaml
     - istio/gateway.yaml
