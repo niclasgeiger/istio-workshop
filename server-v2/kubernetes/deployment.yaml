@@ -3,14 +3,15 @@ kind: Deployment
 metadata:
   name: server-v2
   labels:
-    app: server-v2
+    app: server
 spec:
   replicas: 1
   template:
     metadata:
       name: server-v2
       labels:
-        app: server-v2
+        app: server
+        version: v2
     spec:
       containers:
         - name: server-v2
@@ -19,4 +20,5 @@ spec:
       restartPolicy: Always
   selector:
     matchLabels:
-      app: server-v2
+      app: server
+      version: v2

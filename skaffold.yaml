@@ -25,9 +25,9 @@ deploy:
     - client/kubernetes/service.yaml
     - client/kubernetes/virtualservice.yaml
     - server-v1/kubernetes/deployment.yaml
-    - server-v1/kubernetes/service.yaml
     - server-v2/kubernetes/deployment.yaml
-    - server-v2/kubernetes/service.yaml
     - istio/gateway.yaml
     - istio/destinationrule.yaml
     - istio/virtualservice.yaml
+    - istio/service.yaml
+    - istio/mtls.yaml
