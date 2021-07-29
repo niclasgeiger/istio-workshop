@@ -80,14 +80,37 @@ skaffold run
 kubectl label namespace default istio-injection=enabled 
 ```
 
-### Deploy Application again and check the sidecars
-
+### Run first example
+The first example is just a normal setup with 1 server and 1 client connecting via istio and exposed via its egress gateway.
 ```bash
-skaffold delete
-skaffold run
+make run0
+# to stop
+make stop0
 ```
 
-### Apply istio gateway
+### Run second example
+The second example adds traffic shifting, shifting 50/50 the traffic from the client to two different versions of the server (see clock difference).
 ```bash
-kubectl apply -f istio/gateway.yaml 
+make run1
+# to stop
+make stop1
+```
+
+### Run third example
+The third example adds support for JWT token verification. In order to get this running you have to supply a valid JWT token according to the configuration of the issuer.
+This example uses a privately owned cognito pool for this right now.
+The Header has to include `Authorization=Bearer <JWT-Token>`.
+```bash
+make run2
+# to stop
+make stop2
+```
+
+### Run fourth example
+The fourth example shows how to artificially inject delay into the client networking.
+This artificial delay can be enabled via the Header Value `Fault=true`
+```bash
+make run3
+# to stop
+make stop3
 ```

@@ -1,0 +1,27 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: client-delay
+spec:
+  hosts:
+    - 'client.istio'
+  gateways:
+    - istio-system/istio-gateway
+  http:
+    - fault:
+        delay:
+          fixedDelay: 5s
+          percentage:
+            value: 100
+      match:
+        - headers:
+            fault:
+              exact: "true"
+      route:
+        - destination:
+            host: client
+            subset: v1
+    - route:
+        - destination:
+            host: client
+            subset: v1

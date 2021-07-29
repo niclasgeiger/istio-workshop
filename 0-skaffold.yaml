@@ -9,11 +9,11 @@ build:
     docker:
       dockerfile: Dockerfile
   - image: server-v1
-    context: server-v1
+    context: server/v1
     docker:
       dockerfile: Dockerfile
   - image: server-v2
-    context: server-v2
+    context: server/v2
     docker:
       dockerfile: Dockerfile
   local:
@@ -24,12 +24,8 @@ deploy:
     - client/kubernetes/deployment.yaml
     - client/kubernetes/service.yaml
     - client/kubernetes/virtualservice.yaml
-    - client/kubernetes/request-authentication.yaml
-    - client/kubernetes/authorization-policy.yaml
-    - server-v1/kubernetes/deployment.yaml
-    - server-v2/kubernetes/deployment.yaml
+    - client/kubernetes/destinationrule.yaml
+    - server/v1/kubernetes/deployment.yaml
+    - server/service.yaml
+    - 0-default/virtualservice.yaml
     - istio/gateway.yaml
-    - istio/destinationrule.yaml
-    - istio/virtualservice.yaml
-    - istio/service.yaml
-    - istio/mtls.yaml

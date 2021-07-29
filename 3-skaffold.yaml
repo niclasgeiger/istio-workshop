@@ -1,0 +1,35 @@
+apiVersion: skaffold/v2beta19
+kind: Config
+metadata:
+  name: istio-workshop
+build:
+  artifacts:
+    - image: client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+    - image: server-v1
+      context: server/v1
+      docker:
+        dockerfile: Dockerfile
+    - image: server-v2
+      context: server/v2
+      docker:
+        dockerfile: Dockerfile
+  local:
+    useBuildkit: true
+deploy:
+  kubectl:
+    manifests:
+      - client/kubernetes/deployment.yaml
+      - client/kubernetes/service.yaml
+      - client/kubernetes/destinationrule.yaml
+      - server/service.yaml
+      - server/v1/kubernetes/deployment.yaml
+      - server/v2/kubernetes/deployment.yaml
+      - istio/gateway.yaml
+      - 1-traffic-shift/destinationrule.yaml
+      - 1-traffic-shift/virtualservice.yaml
+      - 2-auth/request-authentication.yaml
+      - 2-auth/authorization-policy.yaml
+      - 3-fault-injection/virtualservice.yaml
