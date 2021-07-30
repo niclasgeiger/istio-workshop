@@ -44,11 +44,11 @@ istioctl install --set profile=demo
 ## Monitoring
 ### Prometheus (Metric Dashboards)
 ```bash
+kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.10/samples/addons/prometheus.yaml
 istioctl dashboard prometheus
 ```
 ### Grafana (Metric Dashboards)
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.10/samples/addons/prometheus.yaml
 kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.10/samples/addons/grafana.yaml
 istioctl dashboard grafana
 ```
