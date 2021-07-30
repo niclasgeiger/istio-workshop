@@ -64,7 +64,7 @@ The Login Credentials are: admin/admin
 kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.10/samples/addons/jaeger.yaml
 istioctl dashboard jaeger
 ```
-### Jaeger (Tracing)
+### Zipkin (Tracing)
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.10/samples/addons/extras/zipkin.yaml
 istioctl dashboard zipkin
