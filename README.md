@@ -72,7 +72,9 @@ istioctl dashboard zipkin
 
 ### Deploy Applications
 ```bash
-skaffold run
+make run0
+# to stop again
+make stop0
 ```
 
 ### Enable istio injection for default namespace
